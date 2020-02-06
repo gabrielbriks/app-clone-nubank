@@ -1,0 +1,13 @@
+#Preparação do  Ambiente
+
+- Iremos utilizar um template disponibilizado pelo própria Rockeatseat para iniciarmos o desenvolvimento,
+incialmente execute o seguinte comando: 
+    Comand > 'react-native init AwesomeExample --template rockeatseat-basic';
+    #Caso esse comando não funcionar, utilize o 'npm install -g react-native';
+
+-Adicionando as depencias citadas   
+    Initi: 
+        yarn add react-navigatio
+        yarn add styled-components
+
+6:07
