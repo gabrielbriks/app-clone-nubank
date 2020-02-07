@@ -7,7 +7,8 @@ incialmente execute o seguinte comando:
 
 -Adicionando as depencias citadas   
     Initi: 
-        yarn add react-navigatio
+        yarn add react-navigation
         yarn add styled-components
+        yarn add react-native-gesture-handler
 
 6:07
