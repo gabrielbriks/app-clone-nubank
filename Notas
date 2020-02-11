@@ -6,9 +6,42 @@ incialmente execute o seguinte comando:
     #Caso esse comando não funcionar, utilize o 'npm install -g react-native';
 
 -Adicionando as depencias citadas   
-    Initi: 
+    Initial: 
         yarn add react-navigation
+        yarn add react-navigation-stack >> Navegação por pilha(ocorre por ação de botoes);
         yarn add styled-components
         yarn add react-native-gesture-handler
+    Instalação obrigatória:
+        expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 
-6:07
+    Instalação de icons:
+        yarn add react-native-vector-icons
+    Logo após é preciso rodar o seguinde comando:
+        react-native link react-native-vector-icons
+    
+
+- Densidade de pixels:
+    Tem aparelhos que possuem densidade de pixel normal 2 ou 3, o que exatamente isso quer dizer?
+        que ao adicionarmos por exemplo, uma logo de 20px, para um aparelho de densidade 3, obrigatoriamente devermos 
+        multiplicar o valor original da nossa logo por 3x; Ou seja a nossa logo terá 60px
+
+    
+
+#Estilizações 
+
+    -Header:
+        - Ao adicionarmos o "flexDirection: row" nosso icon e o nome passa a ficar na mesma linha
+        e não abaixo do outro.
+#Utilizando o Icon do MaterialIcons
+    - Estamos utilizando uma flechinha para baixo cujo o nome é : "keyboard-arrow-down"
+        - Para conseguirmos descobrir os nomes de outros icons podemos pesquisar no seguinte Link:
+                https://material.io/tools/icons
+            Lembrando que pegando o nome original, devemos trocar os '_' por ífens( - );
+
+# Descolando o nosso header(nubank), do alto da tela de dispositivos 18:9
+    - Dependencia: yarn add react-native-iphone-x-helper
+        import: " import { getStatusBarHeight } from 'react-native-iphone-x-helper' "
+    - Utilização:
+        Dentro da nossa page Main, iremos definir um com a seguinte propiedade: 'paddingTop: getStatusBarHeight()'
+        Assim tanto para ios e Android ira funcionar;
+
