@@ -1,10 +1,10 @@
+// ## Importações de pacotes
 import React from 'react';
 import { StyleSheet, Image, View} from 'react-native';
-
 /* Importando Helper do Iphone para medir espaçamento/tamanho parte superior e button home */
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
-// import { Container } from './styles';
 
+// ## Importações internas
 import Header from '../../components/Header';
 import Tabs from '../../components/Tabs';
 

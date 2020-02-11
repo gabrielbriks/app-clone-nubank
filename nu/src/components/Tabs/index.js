@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 export default function Header(){
     return (
         <View style={styled.container}>
-            <ScrollView contentContainerStyle={tabsContainer.contentContainerStyle}>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={tabsContainer.container}>
                 <View style={styles.tabItem}>   
                     <Icon name="person-add" size={24} color="#fff" />
                     <Text style={styles.tabText}>Indicar amigos</Text>
@@ -55,10 +55,10 @@ const styles = StyleSheet.create({
 
 /* Utilizando o styledCompoponents */
 const tabsContainer = styled.ScrollView.attrs({
-    contentContainerStyle:{
-        horizontal: true, // Garantindo que a ScrollView gire em sentido horizontal
+    container:{
+        // horizontal: true, // Garantindo que a ScrollView gire em sentido horizontal
         contentContainerStyle: { paddingLeft: 10, paddingRight: 20 },
-        showsHorizontalScrollIndicator: false, // Assim ele não irá mostrar a barra de rolagem para a nossa ScroolView
+        //showsHorizontalScrollIndicator: false, // Assim ele não irá mostrar a barra de rolagem para a nossa ScroolView
     }
 });
 
