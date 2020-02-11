@@ -45,3 +45,5 @@ incialmente execute o seguinte comando:
         Dentro da nossa page Main, iremos definir um com a seguinte propiedade: 'paddingTop: getStatusBarHeight()'
         Assim tanto para ios e Android ira funcionar;
 
+#Utilizando "flex-direction:row" juntamente com o "justfy-content: space-between"
+    Isso faz com que dois item fiquem, um totalmente a direita e outro totalmente a esquerda
