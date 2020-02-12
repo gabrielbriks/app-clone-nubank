@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 // ## Importações internas
 import Header from '../../components/Header';
 import Tabs from '../../components/Tabs';
+import Menu from '../../components/Menu';
 
 export default function Main(){
     return (
@@ -16,6 +17,8 @@ export default function Main(){
         <View style={styles.container}>
             <Header />
                 <Content>
+                    <Menu />
+
                     <Card>
                         <CardHeader>
                             <Icon name="attach-money" size={28} color="#666" />
@@ -63,7 +66,11 @@ const Card = styled.View`
     marginTop: 0;
     marginHorizontal: 20px;
     height: 100%;
-
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 380px;
+     
 `;
 
 const CardHeader = styled.View`

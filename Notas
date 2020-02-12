@@ -47,3 +47,27 @@ incialmente execute o seguinte comando:
 
 #Utilizando "flex-direction:row" juntamente com o "justfy-content: space-between"
     Isso faz com que dois item fiquem, um totalmente a direita e outro totalmente a esquerda
+
+
+#Criando o nosso menu:
+    - No menu padrao do nubank temo um QRCode, e para que o nosso clone venha ter, iremos utilizar 
+    uma lib, para a instalação execute o comando abaixo:
+     Comand > yarn add react-native-qrcode-svg
+    - Essa lib serva para gerar QRCode dentro do react native
+
+    -em nossa tag Qrcode que criamos aceita um 'value="" ' que no caso funciona como um 'href' e iremos direcionar
+    para o site no proprio nubank 
+    
+    -Other Dependeces
+    yarn add react-native-svg
+    yarn react-native link react-native-svg
+    yarn add react-native-qrcode-svg 
+
+    - Nenhuma das opções acima resolveu o problema de adicionar o QRCode, entao 
+    pesquisando nesse site consgui adicionar o Code:
+        https://www.npmjs.com/package/react-native-custom-qr-codes-expo 
+
+
+    - borderTopWidth: ${StyleSheet.hairlineWidth}px;
+        Essa propriedade acima nos proposrciona a pocipilidade de usar a medida menor que um pixel, 
+        se caso for traduzir 'hairlineWidth' para o portugues br, teremos "tamanho do fio de cabelo"
