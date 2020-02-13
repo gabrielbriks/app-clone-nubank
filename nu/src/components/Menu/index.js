@@ -1,14 +1,19 @@
 import React from 'react';
-import { StyleSheet, Image, View, ScrollView} from 'react-native';
+import { StyleSheet, Image, View, ScrollView, Animated} from 'react-native';
 import styled from 'styled-components/native';
 // import QRCode from 'react-native-qrcode';
 import { QRCode } from 'react-native-custom-qr-codes-expo';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default function Menu(){
+export default function Menu({ translateY }){
     return(
         // horizontal={true} showsHorizontalScrollIndicator={false} 
-        <Container  horizontal={false} >
+        <Container style={{
+            opacity: translateY.interpolate({
+                inputRange: [0, 150],
+                outputRange: [0, 1],
+                })
+        }}>
             <Code>
                 <QRCode 
                     content="https://nubank.com.br"
@@ -61,7 +66,7 @@ export default function Menu(){
 // });
 
 
-const Container = styled.ScrollView`
+const Container = styled(Animated.ScrollView)`
     margin: 0 30px;
 `;
 //overflow: hidden

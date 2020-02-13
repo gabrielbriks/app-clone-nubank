@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
 const tabsContainer = styled.ScrollView.attrs({
     container:{
         // horizontal: true, // Garantindo que a ScrollView gire em sentido horizontal
-        contentContainerStyle: { paddingLeft: 10, paddingRight: 20 },
+        contentContainerStyle: { paddingLeft: 10, paddingRight: 20, paddingTop: 20 },
         //showsHorizontalScrollIndicator: false, // Assim ele não irá mostrar a barra de rolagem para a nossa ScroolView
     }
 });

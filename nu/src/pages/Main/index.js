@@ -5,6 +5,8 @@ import { StyleSheet, Image, View} from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Animated } from 'react-native'; //Api de animações 'bem robusta'
+import { PanGestureHandler, State } from 'react-native-gesture-handler'; // Açoes de arrastar
 
 // ## Importações internas
 import Header from '../../components/Header';
@@ -12,28 +14,63 @@ import Tabs from '../../components/Tabs';
 import Menu from '../../components/Menu';
 
 export default function Main(){
+    
+    const translateY = new Animated.Value(0); //o '.Value' permite sofrer alterações, e realizar alterações no CSS; Ñ utilizamos o state por a performace vai ser muito ruim devido a taxa de atualização que esse item irá sofrer
+
+    //Vou poder ter varios eventos;
+    //Basicamente ele ira captar o evento de arrastar e passar o valor para a nossa variavel acima
+    const animatedEvent = Animated.event(
+        [
+            {
+                nativeEvent: {
+                    translateY: translateY, 
+                }
+            }
+        ],
+        {
+            //utilizando o drive nativo do reactNative, para animações;
+            useNativeDriver: true,
+        },
+    );
+
+    function onHandlerStateChange(event){
+        //
+
+    }
+    
     return (
         <>
         <View style={styles.container}>
             <Header />
                 <Content>
-                    <Menu />
+                    <Menu translateY={translateY}/>
 
-                    <Card>
-                        <CardHeader>
-                            <Icon name="attach-money" size={28} color="#666" />
-                            <Icon name="visibility-off" size={28} color="#666"/>
-                        </CardHeader>    
-                        <CardContent>
-                            <Title>Saldo disponível</Title>
-                            <Description>R$ 197.611,65</Description>
-                        </CardContent>
-                        <CardFooter>
-                            <Annotation>
-                                Tranferência de R$ 20,00 recebida de Gabriel Morais hoje às 06:00h
-                            </Annotation>
-                        </CardFooter>
-                    </Card>           
+                    <PanGestureHandler onGestureEvent={animatedEvent} onHandlerStateChange={onHandlerStateChange} >
+                        <Card style={{
+                            transform: [{
+                                translateY: translateY.interpolate({
+                                    inputRange: [-350, 395],
+                                    outputRange: [-350, 395],
+                                    extrapolate: 'clamp',
+                                }),
+                            }]
+                        }}>
+                            <CardHeader>
+                                <Icon name="attach-money" size={28} color="#666" />
+                                <Icon name="visibility-off" size={28} color="#666"/>
+                            </CardHeader>    
+                            <CardContent>
+                                <Title>Saldo disponível</Title>
+                                <Description>R$ 197.611,65</Description>
+                            </CardContent>
+                            <CardFooter>
+                                <Annotation>
+                                    Tranferência de R$ 20,00 recebida de Gabriel Morais hoje às 06:00h
+                                </Annotation>
+                            </CardFooter>
+                        </Card> 
+                    </PanGestureHandler>
+
                 </Content>
             <Tabs />
         </View>
@@ -59,7 +96,7 @@ const Content = styled.View`
     zIndex: 5;
 `;
 
-const Card = styled.View`
+const Card = styled(Animated.View)`
     flex:1;
     backgroundColor: #fff;
     borderRadius: 4px;
@@ -69,7 +106,7 @@ const Card = styled.View`
     position: absolute;
     left: 0;
     right: 0;
-    top: 380px;
+    top: 0;
      
 `;
 
