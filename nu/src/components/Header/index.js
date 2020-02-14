@@ -11,7 +11,7 @@ export default function Header(){
             <View style={styles.container}>
                 <View style={styles.top}>
                     <Image  style={styles.logo} source={logo}/>
-                    <Text style={styles.title} >Gabriel</Text>
+                    <Text style={styles.title} >Gabriel Briks</Text>
                 </View>
                 <Icon name="keyboard-arrow-down" size={20} color="#fff"/>
             </View>
