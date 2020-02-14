@@ -1,11 +1,24 @@
 import React from 'react';
-import { StyleSheet, Image, View, Text, ScrollView} from 'react-native';
+import { StyleSheet, Image, View, Text, ScrollView, Animated} from 'react-native';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default function Header(){
+export default function Header({ translateY }){
     return (
-        <View style={styled.container}>
+        <Container style={{
+            transform:[{
+                translateY: translateY.interpolate({
+                    inputRange:[0, 395],
+                    outputRange: [0, 55],
+                    extrapolate: 'clamp',
+                })
+            }],
+            opacity: translateY.interpolate({
+                inputRange:[0, 395],
+                outputRange: [1, 0.1],
+                extrapolate: 'clamp',
+            }),
+        }}>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={tabsContainer.container}>
                 <View style={styles.tabItem}>   
                     <Icon name="person-add" size={24} color="#fff" />
@@ -28,7 +41,7 @@ export default function Header(){
                     <Text style={styles.tabText}>Bloquear cartão</Text>
                 </View>
             </ScrollView>
-        </View>
+        </Container>
     );
 }
 
@@ -57,9 +70,12 @@ const styles = StyleSheet.create({
 const tabsContainer = styled.ScrollView.attrs({
     container:{
         // horizontal: true, // Garantindo que a ScrollView gire em sentido horizontal
-        contentContainerStyle: { paddingLeft: 10, paddingRight: 20, paddingTop: 20 },
+        contentContainerStyle: { paddingLeft: 10, paddingRight: 20},
         //showsHorizontalScrollIndicator: false, // Assim ele não irá mostrar a barra de rolagem para a nossa ScroolView
     }
 });
 
-
+const Container = styled(Animated.View)`
+    height: 100px;
+    marginTop: 20px;
+`;

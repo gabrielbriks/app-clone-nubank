@@ -1,11 +1,10 @@
 // ## Importações de pacotes
 import React from 'react';
-import { StyleSheet, Image, View} from 'react-native';
+import { StyleSheet, Image, View,Animated, NativeComponent} from 'react-native';
 /* Importando Helper do Iphone para medir espaçamento/tamanho parte superior e button home */
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Animated } from 'react-native'; //Api de animações 'bem robusta'
 import { PanGestureHandler, State } from 'react-native-gesture-handler'; // Açoes de arrastar
 
 // ## Importações internas
@@ -14,7 +13,7 @@ import Tabs from '../../components/Tabs';
 import Menu from '../../components/Menu';
 
 export default function Main(){
-    
+    let offset = 0; // Ira guardar o valor em pixels de quanto o usuario arrastou para baixo o card Principal
     const translateY = new Animated.Value(0); //o '.Value' permite sofrer alterações, e realizar alterações no CSS; Ñ utilizamos o state por a performace vai ser muito ruim devido a taxa de atualização que esse item irá sofrer
 
     //Vou poder ter varios eventos;
@@ -23,7 +22,7 @@ export default function Main(){
         [
             {
                 nativeEvent: {
-                    translateY: translateY, 
+                    translationY: translateY, 
                 }
             }
         ],
@@ -34,8 +33,36 @@ export default function Main(){
     );
 
     function onHandlerStateChange(event){
-        //
+        //Ira fazer com que o card principal dessa de vez para baixo ao atingir um certo ponto
+        if(event.nativeEvent.oldState === State.ACTIVE){//Verificando se o estado anterior era 'Active', se true, significa que a animação acabou 
+            let opened = false;
+            const { translationY } = event.nativeEvent;
+            offset += translationY; //Atualizando a var com o valor real de quanto o usuario arrastou o card
 
+            // translateY.setOffset(offset);
+            // translateY.setValue(0);
+            if(translationY >= 100){
+                opened = true;                
+            }
+            else{
+                translateY.setValue(offset);
+                translateY.setOffset(0);
+                offset = 0;
+            }
+
+            Animated.timing(translateY, {
+                toValue: opened ? 395 : 0,
+                duration: 200,
+                useNativeDriver: true,
+            }).start(() => {
+                //vai ser executada ao finalizar a an imação
+                offset = opened ? 395 : 0;
+                translateY.setOffset(offset);
+                translateY.setValue(0);
+            });
+
+
+        }
     }
     
     return (
@@ -45,13 +72,16 @@ export default function Main(){
                 <Content>
                     <Menu translateY={translateY}/>
 
-                    <PanGestureHandler onGestureEvent={animatedEvent} onHandlerStateChange={onHandlerStateChange} >
+                    <PanGestureHandler 
+                        onGestureEvent={animatedEvent}
+                        onHandlerStateChange={onHandlerStateChange}
+                    >
                         <Card style={{
                             transform: [{
                                 translateY: translateY.interpolate({
-                                    inputRange: [-350, 395],
-                                    outputRange: [-350, 395],
-                                    extrapolate: 'clamp',
+                                    inputRange: [-350, 0, 395],
+                                    outputRange: [-50, 0, 395],
+                                    extrapolate: 'clamp', //Se estiver fora dos valores acima não deixa executar
                                 }),
                             }]
                         }}>
@@ -72,7 +102,7 @@ export default function Main(){
                     </PanGestureHandler>
 
                 </Content>
-            <Tabs />
+            <Tabs translateY={translateY}/>
         </View>
         </>
         

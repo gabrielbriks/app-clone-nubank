@@ -1,17 +1,17 @@
 import React from 'react';
 import { StyleSheet, Image, View, ScrollView, Animated} from 'react-native';
 import styled from 'styled-components/native';
-// import QRCode from 'react-native-qrcode';
+//import QRCode from 'react-native-qrcode-svg';
 import { QRCode } from 'react-native-custom-qr-codes-expo';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function Menu({ translateY }){
     return(
-        // horizontal={true} showsHorizontalScrollIndicator={false} 
+        
         <Container style={{
             opacity: translateY.interpolate({
-                inputRange: [0, 150],
-                outputRange: [0, 1],
+                inputRange: [0, 150],// Ao chegar no 150px ele já estara com opacidade maxima
+                outputRange: [0, 1],//Ate que ponto a nossa opacidade deve ir
                 })
         }}>
             <Code>
