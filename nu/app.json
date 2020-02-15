@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "nu",
-    "slug": "nu",
+    "name": "EffectsNu",
+    "slug": "effects-nu",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
@@ -15,7 +15,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#8b40e7"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -24,7 +24,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.gabrielbriks.effectsnu"
+    },
+    "android":{
+      "package": "com.gabrielbriks.effectsnu",
+      "version": 1
     }
   }
 }
