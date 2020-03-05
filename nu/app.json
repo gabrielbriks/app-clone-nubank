@@ -25,7 +25,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.gabrielbriks.effectsnu"
+      "bundleIdentifier": "com.gabrielbriks.effectsnu",
+      "buildNumber": "1.0.0"
     },
     "android":{
       "package": "com.gabrielbriks.effectsnu",
