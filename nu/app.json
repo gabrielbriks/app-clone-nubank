@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "EffectsNu",
-    "slug": "effects-nu",
+    "name": "Face Nubank",
+    "slug": "face-nubank",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
@@ -25,11 +25,11 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.gabrielbriks.effectsnu",
+      "bundleIdentifier": "com.gabrielbriks.facenubank",
       "buildNumber": "1.0.0"
     },
     "android":{
-      "package": "com.gabrielbriks.effectsnu",
+      "package": "com.gabrielbriks.facenubank",
       "version": 1
     }
   }
