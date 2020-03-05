@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Face Nubank",
-    "slug": "face-nubank",
+    "name": "CloneFace Nubank",
+    "slug": "cloneface-nubank",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
@@ -25,12 +25,12 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.gabrielbriks.facenubank",
+      "bundleIdentifier": "com.gabrielbriks.clonefacenubank",
       "buildNumber": "1.0.0"
     },
     "android":{
-      "package": "com.gabrielbriks.facenubank",
-      "version": 1
+      "package": "com.gabrielbriks.clonefacenubank",
+      "versionCode": 1
     }
   }
 }
